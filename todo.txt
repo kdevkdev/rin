@@ -1,0 +1,134 @@
+todo:
+symbols: - suggestion, *done, !rejected, --comment
+
+-*rinc in Java_org_rin_main: use something different for argv|done
+
+-*controlls, for now does nothing|done
+
+
+-*make all bautifull types (intxx_t... |done
+-*make sure all there is no signed where a unsinged should be |needs checking - otherwise done
+
+-*decide on ose of fopen or open|done
+
+-*important: correct file paths instead of ms0 , disk and stuff|done
+
+-*jni, sound and graphcis bufferinga and rendering/home/kaspar/dev/workspace/rin/jni/filer.c:1301: undefined reference to `add_entry_pl'
+/home/kaspar/dev/workspace/rin/jni/filer.c:1297: undefined reference to `add_entry_pl'|done
+
+-*important:  gb.c:34 set correct adress for vframe (ie bitmap pixels) - better use pg instead of accessing the framebuffer directly|  done dont use use_pgu 
+
+-*proper exception handling --jni can throw exceptions -make a little api to throw exceptions |deprecated, not sure if thats necessary and intelligent, rely on other feedback mechanisms
+
+-*investigate what pgbitblitge does (it does hw accelerated bit blitting) and how you can replace it (use existing bi blitting functions or write a new one) | done - dont use gpu functions for now, maybe use later if it makes any sense (prolly not since not all devices have a good gpu, open gl support seems difficult to handle and is not in all andoroid versions present)
+
+-*remove all handwritten screensizes and positioning stuff and replace it with preprocessor variables or variables|deprecated
+
+-*more meaningfull names for gameboy and target screen sizes (instead of SIZELINE, LINE_SIZE...)-> replace GUARD_LINE with GGUARD_LINE, SIZE_LINE with GLINE_SIZE, LINESIZE with LINE_SIZE and SIZE_COLUMN with GCOLUMN_SIZE
+
+-*landscape mode and portrait change handling
+
+-*get audio start stop and  app termination finally working 100%
+
+-*adjust screen size
+
+-*introduce blitt function with variable screen size and format for simplicity and easier adjustment for new targets/screenmodes
+
+-*rewind function
+
+-*remove USE_GPU directive
+
+-*implement sleep mode - mode when unit is locked and no rendering shold be done
+
+-*get rid of fucking audiotrack bugs and sync issues
+
+-*proper pause/unpause acitivity backgound - termination shit
+
+-*fix memory leaks
+
+-*!config save (in native) crashes, delete and dont use it or repair it?
+
+-*save custom palette: local or global? -> use two, one local and one global
+
+-*do color conversion directly when writing to gameboy framebuffer in lcd.c -- only workd for bitblidbilingrid for now -- but good framerate increase in debug.
+
+-*improve audio latency: just use two soundbanks (posibly smaller) -- only works when running renderer_update_sound from the audio thread. Game thread frame rate doesnt seem high enough. 
+
+-*working bresham image upscaling (try to be fast)
+
+-*some turbo/speed setting functionality
+
+-!adjustable rewind buffer size
+
+-*setting handdling, decide on default settings etc...
+
+-!adjustable audio buffer size?
+
+-!leave button detection on controlls to avoid glitch where button remains pressed, not sure if performancewise this is efficiently doable or if it would be a cool feature, maybe make it an? implementation idea: use fastest map (hasmap) in java and keep track of pointers -- keep it as a feature
+
+-*finish menu
+
+-password for release: homer55
+-passowrd for release key: homer47
+
+-*some autosave functionality: customizable in menu?
+
+-*correct bilinearGrid
+
+-!move size calculation of view dimensions backwards in order to be able to use layout dimensions isntead of screen dimensions (might not be possible without too much hassle)
+  --not necessary for now
+
+-*cleanup: - partially done 
+	- *get rid old menu files (menu.c and menu.h)
+	- *cleanup savelaod.c
+	- *pg.c 
+	- *graphics.c
+	- *image.c
+	- *utils.c
+	- *gz.c, filer.c -- remove draw rom progress
+
+-*add scroll to various textviews (help, about) that thei are scrollable on small displays
+-*fix spacing of palette on small displays
+
+-*back key in filebrowsing
+
+-*remove logcalls
+
+-*do something for devices without sdcard, that is to say dont use hardcoded sdcard but something like externalstoragedirectory
+
+-!integrate directory up button into filebrowser instead of ../ -- no confusion --> add string indicating the function instead for simplicity, binsize and consistency
+
+-*associate file endigs with activity and toogleable automove roms to /sdcard/rin
+
+-*libraries: provide mips, x68, and arm 
+  -build unziplib against libz to save space
+  -strip all libraries?
+
+-*build performancecriticall code also against armv7a and armv7a-neon (provide optimal compiler flags) -> use libpreloadcheck.so 
+-*better image buttonsn for high dpi
+
+-adjust ui for various screens:
+	- screenconfigurations that are not ideal:
+	   -generally high resolution and low dp. 
+	- *portrait mode: couple start and select button to the cross or to the A,B- buttons to ensure the user can reach them with the thumb on low dp displays
+	- *landscape mode: align gbcross and A,B- buttons to the bottom instead of so the user can doesnt have can hold his device comfortable.
+	- *find a way to center the rinview, especially on big displays
+	- option to stretch rinview to availaible space ?
+
+----------------------------------------release 1.0--------------------------------------------------------
+-direction button indicator
+-cheat support
+-compressed rom loading, compressed state saving and  loading
+
+-*use lodepng instead of libpng because of size
+
+-opengl render path and scaling
+
+-somehow integrate even- numbered scalefactors to profit from faster scaling possibilities (ie copy 5 pixels at once)
+-allow smaller emulatio screens
+
+
+
+
+after initial release: 
+-(irda?) -- long term goal -- implement somekind of network interaction

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="color_selector">
+        <item name="android:layout_width">@dimen/pal_select_color_width</item>
+        <item name="android:layout_height">@dimen/pal_select_color_height</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:contentDescription">@string/pal_spinner_img_description</item>
+ 		<item name="android:layout_margin">4dp</item>
+    </style>
+    <color name="black">#000000</color>
+	<style name="fullscreen" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+	    <item name="android:background">@color/black</item>
+	</style>
+</resources>

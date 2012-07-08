@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="gb_cross_width">135dp</dimen>
+    <dimen name="gb_cross_height">135dp</dimen>
+    <dimen name="gb_cross_margin_right">0dp</dimen>
+    <dimen name="gb_cross_margin_top">10dp</dimen>
+    <dimen name="round_button_width">80dp</dimen>
+    <dimen name="round_button_height">80dp</dimen>
+    <dimen name="round_button_margin_left">0dp</dimen>
+    <dimen name="round_button_a_margin_top">10dp</dimen>
+    <dimen name="round_button_b_margin_top">20dp</dimen> 
+</resources>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="app_name">Rin</string>
+    <string name="choose_file">Choose file</string>
+    <string name="invalid_file">Please choose a valid file</string>
+    <string name="invalid_file_extension">Invalid file extension</string>
+    <string name="invalid_save_file_extension">Invalid file extension, try .gz</string>
+	<string name="exit">Exit</string>
+	<string name="state_load">State Load</string>
+	<string name="state_save">State Save</string>
+	<string name="sound">Sound</string>
+	<string name="turbo">Turbo</string>
+	<string name="on">On</string>
+	<string name="off">Off</string>
+	<string name="screenshot">Take screenshot</string>
+	<string name="screen">Screen Settings</string>
+	<string name="gb_palette">Gameboy Palette</string>
+	<string name="show_fps">Show framerate</string>
+	<string name="load_rom">Load ROM</string>
+	<string name="reset">Reset</string>
+	<string name="help">Help</string>
+	<string name="about">About</string>
+	<string name="save">Save</string>
+	<string name="up">Up</string>
+	<string name="filename">filename</string>
+	<string name="overwrite">Overwrite?</string>
+	<string name="yes">Yes</string>
+	<string name="no">No</string>
+	<string name="empty_filename">Enter filename</string>
+	<string name="no_rom_loaded">No ROM loaded. Save states can only be loaded for a specific rom and are put into a directory named after the rom.</string>
+	<string name="no_save_path">Error: No save path exists.</string>
+	<string name="cross_button">Cross button</string>
+    <string name="a_button">A button</string>
+    <string name="b_button">B button</string>
+    <string name="select_button">Select button</string>
+    <string name="start_button">Start button</string>
+    <string name="pal_spinner_img_description">Palette preview</string>
+    <string name="click_to_choose_color">Click on color field to edit when custom color is selected</string>
+    <string name="color_preview">Color preview</string>
+    <string-array name="palettes_array">
+		<item>Monochrome</item>
+		<item>Bright Sepia</item>
+		<item>Red</item>
+		<item>Dark Sepia</item>
+		<item>Pastel Color</item>
+		<item>Orange</item>
+		<item>Yellow</item>
+		<item>Bright Blue</item>
+		<item>Dark Blue</item>
+		<item>Gray</item>
+		<item>Bright Green</item>
+		<item>Dark Green</item>
+		<item>Reverse</item>
+		<item>Custom ROM specific palette</item>
+		<item>Custom global palette</item>
+    </string-array>
+    <string name="screen_menu_title">Scale settings</string>
+    <string name="scale_nearest_neighbour">Nearest Neighbour: Fastest but no interpolation</string>
+    <string name="scale_bilinear_grid">Bilinear Grid: Recommended - Fast and interpolates pixel borders</string>
+    <string name="scale_bilinear">Bilinear: Slow and blurry but full bilinear interpolation</string>
+    <string name="speed">Speed</string>
+    <string name="default_value">Default value</string>
+    <string name="autocopy_rom">Copy Roms to rin directory</string>
+    <string name="autosave">Autosave</string>
+    <string name="autosave_menu_text">Time intervall in seconds between autosaves. Set 0 to disable.</string>
+   	<string name="about_menu_text">&lt;h4&gt;Rin for android&lt;/h4&gt;&lt;br&gt;This application is subject to the &lt;i&gt;GPLv2&lt;/i&gt; and later license. Thanks to homer for the gb emulation core, davexx for the rewind code, the linux kernel, bionic, lodepng, google for android and so on.</string>
+	<string name="help_menu_text">&lt;h4&gt;Help&lt;/h4&gt;&lt;br&gt;&lt;b&gt;Folders:&lt;/b&gt;Put roms under /sdcard/rin (or "external-storage-directory"/rin) &lt;br&gt;&lt;br&gt;&lt;b&gt;States:&lt;/b&gt;Are used to save the game progress, respectively to load it again. To load a state, first load the corresponding rom and then the state. States are saved into rin/save/sav.{"rom-name"}&lt;br&gt;&lt;br&gt;&lt;b&gt;Autocopy Roms:&lt;/b&gt;If enabled, roms are copied to /sdcard/rin (or "external-storage"/rin). &lt;br&gt;&lt;br&gt;&lt;b&gt;Sticky Keys:&lt;/b&gt;When dragging the finger out of a touch-key zone instead of releasing it, the key remains pressed. To realease it press it again normally.&lt;br&gt;&lt;br&gt;&lt;b&gt;Rewind:&lt;/b&gt; Hold the back key pressed to rewind&lt;br&gt;&lt;br&gt;&lt;b&gt;Config:&lt;/b&gt; Local config means rom specific, global config is for the whole app. The global palette, the autocopy rom, the framerate marker and the scale method are the only global settings. All other settings are local.&lt;br&gt;&lt;br&gt;&lt;b&gt;Screenshots:&lt;/b&gt; Are saved to rin/save/sav.{"rom-Name"}.</string>
+</resources>

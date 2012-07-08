@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:label="@string/choose_file">
+<ListView android:id="@android:id/list"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_above="@+id/save"
+      android:layout_alignParentTop="true">
+</ListView>
+<EditText 	android:id="@+id/filename"
+			android:imeOptions="actionDone"
+			android:imeActionLabel="@string/save"
+			android:singleLine="true"
+			android:lines="1"
+			android:hint="@string/filename" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_alignParentBottom="true">
+</EditText>
+<Button android:layout_alignRight="@id/filename"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:text="@string/save"
+    	android:layout_alignParentBottom="true"
+    	android:layout_alignParentRight="true"
+    	android:id="@+id/save"/>
+</RelativeLayout>

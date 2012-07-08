@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="pal_select_color_width">50dp</dimen>
+    <dimen name="pal_select_color_height">50dp</dimen>
+    <dimen name="gb_cross_width">115dp</dimen>
+    <dimen name="gb_cross_height">115dp</dimen>
+    <dimen name="gb_cross_margin_right">5dp</dimen>
+    <dimen name="gb_cross_margin_top">60dp</dimen>
+    <dimen name="gb_cross_margin_bottom">60dp</dimen>
+    <dimen name="round_button_width">45dp</dimen>
+    <dimen name="round_button_height">45dp</dimen>
+    <dimen name="round_button_margin_left">5dp</dimen>
+    <dimen name="round_button_a_margin_top">0dp</dimen>
+    <dimen name="round_button_b_margin_top">35dp</dimen> 
+    <dimen name="round_button_b_margin_bottom">50dp</dimen> 
+    <dimen name="start_button_margin_top">50dp</dimen>
+    <dimen name="select_button_margin_top">50dp</dimen>
+    <dimen name="round_button_margin_left">2dp</dimen>
+</resources>

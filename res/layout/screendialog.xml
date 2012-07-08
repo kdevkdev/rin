@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:id="@+id/screen_dialog"
+	android:paddingTop="8dp"
+	android:paddingRight="8dp"
+	android:paddingBottom="8dp"
+	android:paddingLeft="8dp"
+	android:clipToPadding="false"
+	android:layout_gravity="center">
+	<TextView 
+	    android:id="@+id/screen_menu_title"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/screen_menu_title" />	
+    <RadioGroup
+        android:id="@+id/scale_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/screen_menu_title" >
+        <RadioButton
+            android:id="@+id/scale_nearest_neighbour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/scale_nearest_neighbour" />
+        <RadioButton
+            android:id="@+id/scale_bilinear_grid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scale_bilinear_grid" />
+        <RadioButton
+            android:id="@+id/scale_bilinear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scale_bilinear" />
+    </RadioGroup>
+</RelativeLayout>

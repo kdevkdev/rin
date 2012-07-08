@@ -1,0 +1,46 @@
+ 
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+obj/**
+gen/**
+proguard/**
+libs/**
+release/**
+
+*.tmp
+*.bak
+*.swp
+*.o
+*.so
+*.a
+*.apk
+*.*~
+*.ap_
+*.dex
+*.class
+*~.nib
+*.gb
+*.gbc
+*.gz
+*.zip
+*.GB
+local.properties
+.classpath
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath 

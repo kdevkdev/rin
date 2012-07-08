@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.rin"
+    android:versionCode="1"
+    android:versionName="1.0">
+  <supports-screens
+    android:smallScreens="true"
+    android:normalScreens="true"
+    android:largeScreens="true"
+    android:anyDensity="true" />  
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> 
+  <uses-sdk android:minSdkVersion="8" 
+    android:targetSdkVersion="8" />
+    <!--android:hardwareAccelerated="true"-->
+    <application 
+    	android:icon="@drawable/icon" 
+    	android:label="@string/app_name"
+    	android:debuggable="false"
+    	android:versionCode="1"
+    	android:versionName="1.0">
+    	<service android:enabled="true" android:name=".RinService">
+    		<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+			</intent-filter>
+    	</service>
+        <activity android:name=".rin"
+                  android:label="@string/app_name"
+                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+                  android:launchMode="singleTask"
+                  android:configChanges="keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="file" />
+    <data android:mimeType="*/*" />
+	<data android:host="*"/>
+	<!-- Android is clearly not intended to open files according to extension.
+	Also the file matching with * is unfortunate - it is not possible to escape as many
+	dots in a file name as you want, so do it for 2 for now-->
+    <data android:pathPattern=".*.gb" />
+    <data android:pathPattern=".*.gbc" />
+    <data android:pathPattern=".*.sgb" />
+   <!--  <data android:pathPattern=".*.gb.gz" />
+    <data android:pathPattern=".*.gbc.gz" />
+    <data android:pathPattern=".*.sgb.gz" />
+    <data android:pathPattern=".*.gb.zip" />
+    <data android:pathPattern=".*.gbc.zip" />
+    <data android:pathPattern=".*.sgb.zip" />-->
+    <data android:pathPattern=".*..*.gb" />
+    <data android:pathPattern=".*..*.gbc" />
+    <data android:pathPattern=".*..*.sgb" />
+   <!-- <data android:pathPattern=".*..*.gb.gz" />
+    <data android:pathPattern=".*..*.gbc.gz" />
+    <data android:pathPattern=".*..*.sgb.gz" />
+    <data android:pathPattern=".*..*.gb.zip" />
+    <data android:pathPattern=".*..*.gbc.zip" />
+    <data android:pathPattern=".*..*.sgb.zip" />-->
+</intent-filter>
+        </activity>
+    <activity android:name="FileLoadDialog"
+    		  android:label="@string/app_name"
+    		  android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+    		 <intent-filter>
+        		<action android:name="android.intent.action.VIEW"/>
+     			<category android:name="android.intent.category.DEFAULT" />
+     		</intent-filter>
+     	</activity>
+    <activity android:name="FileSaveDialog"
+    		  android:label="@string/app_name"
+    		  android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+    	    <intent-filter>
+        		<action android:name="android.intent.action.VIEW"/>
+     			<category android:name="android.intent.category.DEFAULT" />
+     		</intent-filter>		  
+   	</activity>
+</application>
+</manifest> 

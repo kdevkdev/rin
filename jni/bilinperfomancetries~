@@ -1,0 +1,52 @@
+billinear performance:
+four nested loops; pixelfetch when needed: 16.2 ms
+two nested loops: pixelfetch always: 37 ms (low image quality)
+two nested loops: pixelfetch alwya, pixeloffset continous (not stretched): 16.5 ms
+two nested loops: pixelfetch when needed, pixeloffset continous (not stretched): 19.6 ms
+
+ideas: 
+-when packing bits use combination of and and shifting to pack colors in one instruction
+-multiply two colors at once
+-preloads
+
+v
+
+i9000:
+render_screen performance
+bilinS 
+v1: 	30.6 ms
+v2: 	29.31 ms (replace unpack pixel values moves with one ubfx, note: not armv7 compatible)
+v3: 	25.46 ms (instead of shifting fractional values 20 bits, only shift them 10 and after multiplying twice shift the result by 20)
+v4: 	19.58 ms (save  3 multiplyes by using multiplication assoziativity for the first two top pixels)
+v5: 	19.16 ms (mul instruction operators reordering)
+v6: 	15.56 ms (debug compile, big refactoring, now use associativity for both vertical and horicontal factors, keep both the two weight steps and the two weight factors in one register, saves two registers, use simd to update weight steps. altough precision got cut quite a bit, colors still look fine)
+v6: 	15.27 ms (non debug compile)
+v7: 	15.25 ms (issue loads only when needed, no measurable perfomance effect
+v8: 	13.85 ms (do three smuad and three adds instead of six smulxy, and this is just for red)
+v9: 	14.63 ms (all colors with smuads, but debug)
+v10:	13.82 ms (non debug)
+
+bilin:
+v1: 16.4 ms (without borders)
+
+
+i91000:
+render_screen performance
+bilinS:
+v10: 7.86 ms (debug)
+v10: 8.04 ms (non-debug)
+
+bilin (C):
+v1: 30 ms (debug)
+v1: 12.7 ms (non-debug)
+
+bilinGrid (C):
+v1: 	11.84ms (debug)
+V1:	 4.7	(non-debug)
+
+v1: 	2.96 	(non-debug)
+
+
+java-side scaling:
+v1: 	16.749	(non-debug, with filter)
+v1: 	12.405  (without filter)

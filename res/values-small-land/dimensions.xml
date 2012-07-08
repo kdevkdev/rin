@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="gb_cross_width">105dp</dimen>
+    <dimen name="gb_cross_height">105dp</dimen>
+    <dimen name="round_button_width">30dp</dimen>
+    <dimen name="round_button_height">30dp</dimen>
+    <dimen name="round_button_margin_left">2dp</dimen>
+</resources>

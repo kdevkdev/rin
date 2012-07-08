@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:id="@+id/speed_dialog"
+	android:paddingTop="8dp"
+	android:paddingRight="8dp"
+	android:paddingBottom="8dp"
+	android:paddingLeft="8dp"
+	android:clipToPadding="false"
+	android:layout_gravity="center">
+	<Button
+        android:id="@+id/speed_default_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/default_value" />
+	<TextView 
+	    android:id="@+id/speed_value"
+	    android:layout_alignParentRight="true"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"/>
+	<SeekBar android:id="@+id/speed_seek_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/speed_default_button"
+        android:max="100"/>
+</RelativeLayout>

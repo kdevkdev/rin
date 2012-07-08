@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:id="@+id/autosave_dialog"
+	android:paddingTop="8dp"
+	android:paddingRight="8dp"
+	android:paddingBottom="8dp"
+	android:paddingLeft="8dp"
+	android:clipToPadding="false"
+	android:layout_gravity="center">
+	<TextView 
+	    android:id="@+id/autosave_menu_text"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/autosave_menu_text" />
+	<EditText 
+	    android:id="@+id/autosave_menu_time"
+	    android:editable="true"
+	    android:inputType="number"
+	    android:maxLength="4"
+	    android:layout_width="80dp"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="4dp"
+	    android:layout_marginBottom="4dp"
+	    android:layout_below="@id/autosave_menu_text"/>
+	</RelativeLayout>

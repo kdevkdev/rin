@@ -1,0 +1,5 @@
+Important:
+
+-Concerning the build, specifically the linking of the prebuilt libraries into the librin.so library for different architectures (x86, mips, arm), something seems to be broken.
+I dont know wether it is the ndk-build system that screws up things or my android.mk, but somehow always the arm version of the libraries gets copied into  rin/obj/local/<arch>
+To correct it, copy the library manually into this folder (from rin/jni/libs/<arch> ).

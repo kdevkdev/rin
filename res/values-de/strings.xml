@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ok">Ok</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="app_name">Rin</string>
+    <string name="choose_file">Datei wählen</string>
+    <string name="invalid_file">Bitte passende Datei wählen</string>
+    <string name="invalid_file_extension">Ungültige Dateiendung</string>
+    <string name="invalid_save_file_extension">Ungültige Dateiendung, versuchen Sie .gz</string>
+	<string name="exit">Beenden</string>
+	<string name="state_load">Spielstand laden</string>
+	<string name="state_save">Spielstand speichern</string>
+	<string name="sound">Ton</string>
+	<string name="turbo">Turbo</string>
+	<string name="on">An</string>
+	<string name="off">Aus</string>
+	<string name="screenshot">Bildschirmfoto</string>
+	<string name="screen">Bildschirmeinstellungen</string>
+	<string name="gb_palette">Gameboy Palette</string>
+	<string name="show_fps">Framerate anzeigen</string>
+	<string name="load_rom">ROM laden</string>
+	<string name="reset">Zurücksetzen</string>
+	<string name="help">Hilfe</string>
+	<string name="about">Über</string>
+	<string name="save">Speichern</string>
+	<string name="up">Aufwärts</string>
+	<string name="filename">Dateiname</string>
+	<string name="overwrite">Überschreiben?</string>
+	<string name="yes">Ja</string>
+	<string name="no">Nein</string>
+	<string name="empty_filename">Leerer Dateiname</string>
+	<string name="no_rom_loaded">Kein ROM geladen. Speicherstände können nur für ein bestimmtes ROM und werden in einem Verzeichniss mit dem Namen des ROMs gespeichert.</string>
+	<string name="no_save_path">Fehler: Speicherverzeichniss existiert nicht</string>
+	<string name="cross_button">Steuerkreuz</string>
+    <string name="a_button">A- Taste</string>
+    <string name="b_button">B- Taste</string>
+    <string name="select_button">Select- Taste</string>
+    <string name="start_button">Start- Taste</string>
+    <string name="pal_spinner_img_description">Palettenvorschau</string>
+    <string name="click_to_choose_color">Auf ein Farbfeld klicken um die Farbe zu bearbeiten wenn eine benutzerdefinierte Farbe ausgewählt ist</string>
+    <string name="color_preview">Farbvorschau</string>
+    <string-array name="palettes_array">
+		<item>Monochrom</item>
+		<item>Helles Sepiabraun</item>
+		<item>Rot</item>
+		<item>Dunkles Sepiabraun</item>
+		<item>Pastelfarbe</item>
+		<item>Orange</item>
+		<item>Gelb</item>
+		<item>Hellblau</item>
+		<item>Dunkelblau</item>
+		<item>Grau</item>
+		<item>Helles Grün</item>
+		<item>Dunkles Grün</item>
+		<item>Farbn umgekehrt</item>
+		<item>Für das ROM verfügbare benutzerdefinierte Palette</item>
+		<item>Global verfügbare benutzerdefinierte Palette</item>
+    </string-array>
+    <string name="screen_menu_title">Skalierungseinstellungen</string>
+    <string name="scale_nearest_neighbour">Nächster- Nachbar: Am schnellsten aber keine Interpolation</string>
+    <string name="scale_bilinear_grid">Gitter- Bilinear: Empfohlen - Schnell und interpoliert entlang der Pixelgrenzen</string>
+    <string name="scale_bilinear">Bilinear: Langsam und verschwommen aber volle bilineare Interpolation</string>
+    <string name="speed">Speed</string>
+    <string name="autocopy_rom">Kopiere Roms ins Rin-Verzeichniss</string>
+    <string name="default_value">Ursprünglicher Wert</string>
+    <string name="autosave">Automatisches Speichern</string>
+    <string name="autosave_menu_text">Zeitintervall in Sekunden zwischen dem automatischen Speichern. 0 schaltet es aus.</string>
+   	<string name="about_menu_text">&lt;h4&gt;Rin für Android&lt;/h4&gt;&lt;br&gt;Diese Anwendung steht unter der &lt;i&gt;GPLv2+&lt;/i&gt; Lizens. Dank an homer für den gameboy Emulationskern, davexx für den Rückspulcode, den Linux Kernel, Bionic, Lodepng, Libz, Google für Android und so weiter.</string>
+	<string name="help_menu_text">&lt;h4&gt;Hilfe&lt;/h4&gt;&lt;br&gt;&lt;b&gt;Verzeichnisse:&lt;/b&gt;Roms sollten unter /sdcard/rin (oder "externes-Seicher-Verzeichniss"/rin) gespeichert werden&lt;br&gt;&lt;br&gt;&lt;b&gt;Status:&lt;/b&gt;Werden genuetzt um den Spielfortschritt zu speichern, respektive ihn wieder zu laden. Um einen Status zu laden muss zuerst das entsprechende Rom geladen werden. Die Status werden in einem Verzeichniss namens rin/save/sav.{"Rom-Name"} gespeichert. &lt;br&gt;&lt;br&gt;&lt;b&gt;Automatisches Kopieren von Roms:&lt;/b&gt;Falls angeschaltet werden Roms automatisch nach /sdcard/rin (oder "Externes-Speicher-Verzeichniss"/rin) verschoben. &lt;br&gt;&lt;br&gt;&lt;b&gt;Automatische Tasten:&lt;/b&gt;Wenn der Finger von einer Berührungstaste herausgezogen wird anstatt ihn anzuheben, dann bleibt die Taste gedrückt. Das automatische Drücken wird aufgehoben wenn die Taste das nächste mal gedrückt wird.&lt;br&gt;&lt;br&gt;&lt;b&gt;Zurückspulen:&lt;/b&gt; Den die Zurück- Taste gedrückt halten um zurückzuspulen.&lt;br&gt;&lt;br&gt;&lt;b&gt;Konfiguration:&lt;/b&gt; Lokale Konfiguration bedeutet Rom spezifisch, globale Konfiguration bezieht sich auf die ganze Applikation. Ausser der globalen Palette, das automatische Kopieren des Roms, der Framerateanzeige und der Skalierungsmethode sind alle Einstellungen lokal.&lt;br&gt;&lt;br&gt;&lt;b&gt;Screenshots:&lt;/b&gt; Werden unter rin/save/sav.{"Rom-Name"} gespeichert</string>
+</resources>
