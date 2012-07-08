@@ -28,6 +28,8 @@ release/**
 *.gz
 *.zip
 *.GB
+*.keystore
+
 local.properties
 .classpath
 .settings/
