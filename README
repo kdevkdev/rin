@@ -1,0 +1,10 @@
+This is an android app to emulate gameboy roms. Supported are the normal gameboy, 
+super gameboy and gameboy color roms. The emulatorcore is based on the rin- gameboy emulator
+for psp.
+
+Minimum api version is 8 because of jnigraphics. Support for Opengles renderpath might be added
+in the future that would allow to target lower api levels.
+
+All of the code is under the GPLv2 and later license.
+
+Contact: elendor44@gmail.com
