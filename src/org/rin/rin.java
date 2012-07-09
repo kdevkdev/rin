@@ -637,7 +637,7 @@ public class rin extends Activity
         setSoundMenuItemText();
         setTurboMenuItemText();
         setBooleanMenu(R.id.menu_show_fps, rinService.getShowFPS());
-        setBooleanMenu(R.id.menu_autocopy_rom, rinService.getShowFPS());
+        setBooleanMenu(R.id.menu_autocopy_rom, rinService.getAutoCopyRom());
         
         return true;
     }

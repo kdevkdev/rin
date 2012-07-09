@@ -68,9 +68,6 @@ symbols: - suggestion, *done, !rejected, --comment
 
 -*finish menu
 
--password for release: homer55
--passowrd for release key: homer47
-
 -*some autosave functionality: customizable in menu?
 
 -*correct bilinearGrid
@@ -119,6 +116,8 @@ symbols: - suggestion, *done, !rejected, --comment
 -direction button indicator
 -cheat support
 -compressed rom loading, compressed state saving and  loading
+
+-retain state of menu when restarting activity (orientation change)
 
 -*use lodepng instead of libpng because of size
 
