@@ -42,7 +42,7 @@ int process_orders(void)
 				break;
 
 				case O_SCREENSHOT:
-					order_take_screenshot((char *) cur->val);
+					//order_take_screenshot((char *) cur->val);
 				break;
 
 				case O_SAVE_CONFIG:
@@ -189,9 +189,9 @@ JNIEXPORT int JNICALL Java_org_rin_Order_giveIntBlocking(JNIEnv *envs, jobject t
 
 	return result;
 }
-void order_take_screenshot(char * filename)
+/*void order_take_screenshot(char * filename)
 {
 	unsigned short *vptr = (unsigned short*)pgGetVramAddr(0, 0);
 	saveImage(filename, vptr, dscreen_width, dscreen_height, dline_size, 0);
-}
+}*/
 

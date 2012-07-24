@@ -7,7 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 
-public class FileLoadDialog extends FileDialog{
+public class FileLoadDialog extends FileDialog
+{
 	
 	@Override
 	public void onCreate(Bundle inState)
@@ -19,7 +20,8 @@ public class FileLoadDialog extends FileDialog{
 	}
 
 	@Override
-	public void onFileClick(int pos, FileAdapter list) {
+	public void onFileClick(int pos, FileAdapter list) 
+	{
 
 		boolean found = false;
 		for(String ext:Filter.getExtensions()){

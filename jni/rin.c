@@ -20,6 +20,7 @@ int running = 1;
 int exited = 0;
 
 char AutosavePath[PATH_MAX];
+char SramPath[PATH_MAX];
 char RinPath[PATH_MAX];
 char RomPath[PATH_MAX];
 char RomName[MAX_NAME];
@@ -334,7 +335,8 @@ void mainloop(void)
 						pgScreenFlip();
 						process_orders();
 					}
-					wavout_enable = 0;
+					
+					wavoutClear();
 				
 					//continue normal emulation
 					if(setting.sound) 
@@ -494,6 +496,10 @@ JNIEXPORT jboolean JNICALL Java_org_rin_RinService_romGetLoaded(JNIEnv *envs, jo
 {
 	return rom_get_loaded();
 }
+JNIEXPORT jint JNICALL Java_org_rin_RinService_romGetType(JNIEnv *envs, jobject this)
+{
+	return now_gb_mode;
+}
 JNIEXPORT jint JNICALL Java_org_rin_SpeedDialog_getSpeed(JNIEnv *envs, jobject this)
 {
 	return get_speed();
@@ -542,6 +548,12 @@ JNIEXPORT void JNICALL Java_org_rin_RinService_setAutosavePath(JNIEnv *envs, job
 {
   	char * ptmp = (char *) (*envs)->GetStringUTFChars(envs, path, 0);
 	strcpy(AutosavePath,ptmp);
+	(*envs)->ReleaseStringUTFChars(envs, path, ptmp);
+}
+JNIEXPORT void JNICALL Java_org_rin_RinService_setSramPath(JNIEnv *envs, jobject this, jstring path)
+{
+  	char * ptmp = (char *) (*envs)->GetStringUTFChars(envs, path, 0);
+	strcpy(SramPath,ptmp);
 	(*envs)->ReleaseStringUTFChars(envs, path, ptmp);
 }
 JNIEXPORT jboolean JNICALL Java_org_rin_RinService_getAutoCopyRom(JNIEnv *envs, jobject this)
@@ -613,6 +625,7 @@ JNIEXPORT jint JNICALL Java_org_rin_RinThread_startNative(JNIEnv *envs, jobject 
 
 	mainloop();
 	//android_log_print(ANDROID_LOG_DEBUG, "org.rin", "native after mainloop");
+	gb_destroy();
 
 	free_rewind_states();
 

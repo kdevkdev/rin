@@ -114,7 +114,23 @@ byte *apu_get_mem()
 }
 
 //---------------------------------------------------------------------
+void snd_clear()
+{
+	snd_que_count=0;
+	snd_bef_clock=0;
+	memset(&snd_stat,0,sizeof(snd_stat));
+	snd_stat.sq1_playing=false;
+	snd_stat.sq2_playing=false;
+	snd_stat.wav_playing=false;
+	snd_stat.noi_playing=false;
+	snd_stat.ch_enable[0][0]=snd_stat.ch_enable[0][1]=snd_stat.ch_enable[1][0]=snd_stat.ch_enable[1][1]=
+		snd_stat.ch_enable[2][0]=snd_stat.ch_enable[2][1]=snd_stat.ch_enable[3][0]=snd_stat.ch_enable[3][1]=1;
+	snd_stat.ch_on[0]=snd_stat.ch_on[1]=snd_stat.ch_on[2]=snd_stat.ch_on[3]=1;
+	snd_stat.master_enable=1;
+	snd_stat.master_vol[0]=snd_stat.master_vol[1]=7;
 
+	memcpy(&snd_stat_cpy,&snd_stat,sizeof(snd_stat));
+}
 void snd_init()
 {
 	snd_b_enable[0]=snd_b_enable[1]=snd_b_enable[2]=snd_b_enable[3]=true;

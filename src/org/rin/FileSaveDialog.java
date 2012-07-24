@@ -2,6 +2,8 @@ package org.rin;
 
 import java.io.File;
 
+import org.rin.TextDialog.OnTextDialogListener;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,6 +14,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,7 +38,8 @@ class ButtonListener implements OnClickListener {
 	}
 }
 
-public class FileSaveDialog extends FileDialog{
+public class FileSaveDialog extends FileDialog
+{
 	
 		private long touchDownTime =0;
 		EditText  editText;
@@ -80,7 +84,31 @@ public class FileSaveDialog extends FileDialog{
             	saveButton.setOnClickListener(saveButtonListener);
 				init(inState);		
 		}
-		
+	    @Override
+	    public boolean onOptionsItemSelected(MenuItem item) 
+	    {
+	    	boolean ret;
+	        // Handle item selection
+	        switch (item.getItemId())
+	        {
+	        	case R.id.fdmenu_help:
+	        		TextDialog helpDialog = new TextDialog(this,this, new OnTextDialogListener(){
+
+	    				public void onOk(int id) 
+	    				{
+	    				}}, R.string.help_fdsavemenu_text);
+	        		
+	        		helpDialog.show(this);
+	        		ret = true;
+	        	break;
+	        
+	        	default:
+	        		ret=  super.onOptionsItemSelected(item);
+	        	break;
+	        		
+	        }
+	        return ret;
+	    }
 		public void onSaveButtonClick(View v)
 		{
 			hideSoftKeyboard();

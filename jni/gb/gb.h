@@ -27,7 +27,7 @@
 #include <string.h>
 #include "gb_types.h"
 #include "../inc/renderer.h"
-#include "../inc/zlib.h"
+//#include "../inc/zlib.h"
 #include "../inc/main.h"
 
 #define INT_VBLANK 1
@@ -162,15 +162,16 @@ struct rom_info {
 };
 
 // gb.c
-size_t gb_save_state(byte *out);
-void gb_restore_state(gzFile fd, const byte *buf);
+size_t  gb_save_state(byte *out);
+void gb_restore_state(FILE * fd, const byte *buf);
 
 void gb_init(void);
+void gb_destroy(void);
 void gb_reset(void);
 void gb_hook_extport(struct ext_hook *ext);
 void gb_unhook_extport();
 void gb_set_skip(int frame);
-bool gb_load_rom(const byte *buf,int size,byte *ram,int ram_size);
+bool gb_load_rom(byte *buf,int size,byte *ram,int ram_size);
 void gb_refresh_pal();
 void gb_run();
 void gb_fill_vframe(word color);
@@ -315,6 +316,7 @@ struct cpu_regs *cpu_set_c_regs();
 // rom.c
 #define MAX_ROM_SIZE 8*1024*1024
 
+//extern byte * rom_image;
 extern byte rom_image[];
 extern byte sram_space[];
 extern int sgb_mode, org_gbtype;
@@ -322,7 +324,7 @@ extern int sgb_mode, org_gbtype;
 void rom_init();
 bool rom_has_battery();
 int rom_get_sram_size();
-bool rom_load_rom(const byte *buf,int size,byte *ram,int ram_size);
+bool rom_load_rom(byte *buf,int size,byte *ram,int ram_size);
 //struct rom_info *rom_get_info();
 //byte *get_rom();
 //byte *get_sram();

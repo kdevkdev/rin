@@ -10,6 +10,8 @@ gen/**
 proguard/**
 libs/**
 release/**
+jni/vbam/**
+*.svn
 
 *.tmp
 *.bak
@@ -30,6 +32,9 @@ release/**
 *.GB
 *.keystore
 *.directory
+*~
+*.zip
+*.gz
 
 local.properties
 .classpath

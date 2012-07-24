@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.text.method.MovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -17,7 +18,6 @@ public class AboutDialog
 {
 	public interface OnAboutDialogListener {
 		abstract void onOk(int id);
-		abstract void onCancel();
 	}
 	private Context context;
 	private Activity activity; 
@@ -38,7 +38,6 @@ public class AboutDialog
 		String dontext = activity.getString(R.string.donate);
 		String link = "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=HL84X9ZRHNURL&lc=CH&item_name=kdevkdev&item_number=arin&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted";
 		text.setText(Html.fromHtml(activity.getString(R.string.about_menu_text)+ "<br><br><a href=\"" + link + "\">" + dontext + "</a>"));
-		
 		text.setMovementMethod(LinkMovementMethod.getInstance());
 		
 		dialog = new AlertDialog.Builder(context)
@@ -46,11 +45,6 @@ public class AboutDialog
 			public void onClick(DialogInterface dialog, int which) {
 				
 				listener.onOk(which);
-			}
-		})
-		.setOnCancelListener(new OnCancelListener() {
-		    public void onCancel(DialogInterface paramDialogInterface) {
-		    	listener.onCancel();
 			}
 		})
 		.create();

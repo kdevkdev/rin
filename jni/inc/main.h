@@ -39,7 +39,11 @@
 #define PF_PG_SCREEN_FLIP 4
 #define PF_CPU_EXEC 5
 
-extern char RinPath[], RomPath[], SavePath[], RomName[], CheatPath[], ScreenPath[];
+#define MODE_GB   1
+#define MODE_SGB  2
+#define MODE_GBC  3
+
+extern char RinPath[], RomPath[], SavePath[], RomName[], CheatPath[], ScreenPath[], SramPath[];
 extern int bMenu, bSleep, bPausek, state, state_req, rin_rewind;
 extern queue_t * order_queue;
 

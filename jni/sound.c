@@ -6,7 +6,8 @@ int wavout_enable=1;
 void wavoutClear()
 {
 
-	apu_init();
+	//apu_init();
+	snd_clear();
 	memset(sound_buf, 0, SOUND_BUF_LEN*BANKS*sizeof(short));
 }
 

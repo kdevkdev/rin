@@ -140,6 +140,7 @@ public class RinAudioRunnable extends AudioTrack implements Runnable
 				if(tempReqState == STATE_STOPPED)
 				{
 					pause();
+					flush();
 					//log.d("org.rin", "RinAudioRunnable: run() - audio stopped");
 					
 					//wait on restart or temination
@@ -149,6 +150,7 @@ public class RinAudioRunnable extends AudioTrack implements Runnable
 					//set states
 					state.set(STATE_STOPPED);
 					stateReq.set(0);
+
 				}
 				else if(tempReqState == 0)
 				{

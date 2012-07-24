@@ -14,7 +14,7 @@ static int getNextPower2(int width)
 /*void user_warning_fn(png_structp png_ptr, png_const_charp warning_msg)
 {
 }*/
-void saveImage(const char* filename, short * data, int width, int height, int lineSize, int saveAlpha)
+/*void saveImage(const char* filename, short * data, int width, int height, int lineSize, int saveAlpha)
 {
 	uint8_t * buf = malloc(width * height * 4);
 	
@@ -40,11 +40,11 @@ void saveImage(const char* filename, short * data, int width, int height, int li
 		dl+= lineSize;
 	}
 	
-	 /*Encode the image*/
+	 //Encode the image
 	unsigned error = lodepng_encode32_file(filename, buf, width, height);
 	
 	free(buf);
-}
+}*/
 /*Image* loadImage(char* filename)
 {
 	png_structp png_ptr;

@@ -16,8 +16,8 @@
     	android:icon="@drawable/icon" 
     	android:label="@string/app_name"
     	android:debuggable="false"
-    	android:versionCode="1"
-    	android:versionName="1.0">
+    	android:versionCode="2"
+    	android:versionName="1.1">
     	<service android:enabled="true" android:name=".RinService">
     		<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -45,21 +45,23 @@
     <data android:pathPattern=".*.gb" />
     <data android:pathPattern=".*.gbc" />
     <data android:pathPattern=".*.sgb" />
-   <!--  <data android:pathPattern=".*.gb.gz" />
+    <data android:pathPattern=".*.gz" />
+    <data android:pathPattern=".*.zip" />
+    <data android:pathPattern=".*.gb.gz" />
     <data android:pathPattern=".*.gbc.gz" />
     <data android:pathPattern=".*.sgb.gz" />
     <data android:pathPattern=".*.gb.zip" />
     <data android:pathPattern=".*.gbc.zip" />
-    <data android:pathPattern=".*.sgb.zip" />-->
+    <data android:pathPattern=".*.sgb.zip" />
     <data android:pathPattern=".*..*.gb" />
     <data android:pathPattern=".*..*.gbc" />
     <data android:pathPattern=".*..*.sgb" />
-   <!-- <data android:pathPattern=".*..*.gb.gz" />
+    <data android:pathPattern=".*..*.gb.gz" />
     <data android:pathPattern=".*..*.gbc.gz" />
     <data android:pathPattern=".*..*.sgb.gz" />
     <data android:pathPattern=".*..*.gb.zip" />
     <data android:pathPattern=".*..*.gbc.zip" />
-    <data android:pathPattern=".*..*.sgb.zip" />-->
+    <data android:pathPattern=".*..*.sgb.zip" />
 </intent-filter>
         </activity>
     <activity android:name="FileLoadDialog"

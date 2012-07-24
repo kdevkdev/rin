@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
+    <string name="app_name">Rin</string>
+    <string name="choose_file">Choissisez un fichier</string>
+    <string name="invalid_file">Choissisez un fichier valid, s'il vous plaît</string>
+    <string name="invalid_file_extension">Extension de fichier n'est pas valable</string>
+    <string name="invalid_save_file_extension">Extension de fichier n'est pas valable, essayez .gz</string>
+	<string name="exit">Terminer  </string>
+	<string name="state_load">Charger un état</string>
+	<string name="state_save">Enregrister un état</string>
+	<string name="sound">Son</string>
+	<string name="turbo">Turbo</string>
+	<string name="on">Activé</string>
+	<string name="off">Désactivé</string>
+	<string name="screenshot">Capture d'écran<string>
+	<string name="screen">Paramètres d'écran</string>
+	<string name="gb_palette">Gameboy Palette</string>
+	<string name="show_fps">Montrer le taux de trame</string>
+	<string name="load_rom">Charger ROM</string>
+	<string name="reset">Réinitialiser</string>
+	<string name="help">Aide</string>
+	<string name="about">À propos</string>
+	<string name="save">Enregistrer</string>
+	<string name="up">Vers haute</string>
+	<string name="filename">filename</string>
+	<string name="overwrite">Remplacer</string>
+	<string name="yes">Oui</string>
+	<string name="no">Non</string>
+	<string name="empty_filename">Entrez un nom de fichier</string>
+	<string name="no_rom_loaded">Auccun Rom chargé. États d'enrigestrement peuvent seulement être chargés pour un rom spécifique et il sont deposés dans un dossier nomé après le rom: "rin/sav.{nom du rom}"</string>
+	<string name="no_save_path">Erreur: Ce chemin d'enregistrement n'existe pas.</string>
+	<string name="cross_button">Cross button</string>
+    <string name="a_button">Touche A</string>
+    <string name="b_button">Touche B</string>
+    <string name="select_button">Touche Select</string>
+    <string name="start_button">Touche Start</string>
+    <string name="pal_spinner_img_description">Prévisualisation de la palette </string>
+    <string name="click_to_choose_color">Quand la palette personnalisable est sélecté, appuyez sur la carré de la couleur pour la changer. </string>
+    <string name="color_preview">Prévisualisation de la couleur</string>
+    <string-array name="palettes_array">
+		<item>Monochrome</item>
+		<item>Sépia brillant</item>
+		<item>Rouge</item>
+		<item>Sépia sombre</item>
+		<item>Couleur pastel</item>
+		<item>Orange</item>
+		<item>Jaune</item>
+		<item>Bleue vif</item>
+		<item>Bleue foncé</item>
+		<item>Gris</item>
+		<item>Vert clair</item>
+		<item>Vert foncé</item>
+		<item>Inverse</item>
+		<item>Palette personnalisable pour un Rom spécifique</item>
+		<item>Palette personnalisable globale</item>
+    </string-array>
+    <string name="screen_menu_title">Paramêtres d'écran</string>
+    <string name="scale_nearest_neighbour">Voisin-le-plus-proche: Le plus rapide, mais sans d'interpolation</string>
+    <string name="scale_bilinear_grid">Réseau-bilinear: Recommandé - Vite et interpole les marges des pixels. </string>
+    <string name="scale_bilinear">Bilinéaire: Lente et floue mais interpolation bilinéare pour tous les pixels</string>
+    <string name="speed">Vitesse</string>
+    <string name="default_value">Valeur par défaut</string>
+    <string name="autocopy_rom">Copier les roms automatiquement dans le dossier rin</string>
+    <string name="autosave">Enregistrement automatique</string>
+    <string name="autosave_menu_text">L'intervall du temps en seconds entre les enregistrements automatuques. Entrez 0 pour désactiver.</string>
+   	<string name="about_menu_text">&lt;h4&gt;Rin pour android&lt;/h4&gt;&lt;br&gt;This application is subject to the &lt;i&gt;GPLv2&lt;/i&gt; and later license. Thanks to homer for the gb emulation core, davexx for the rewind code, yukutu for the colorpicker, octal for his gameboy icon, the linux kernel, bionic, lodepng, google for android and so on. Source code availaible at &lt;a href="https://github.com/kdevkdev/rin"&gt;https://github.com/kdevkdev/rin&lt;/a&gt;. Parts of the big icon (the gameboy notably) are under this &lt;a href="http://www.clker.com/disclaimer.html"&gt;license&lt;/a&gt;.</string>
+	<string name="help_menu_text">&lt;h4&gt;Help&lt;/h4&gt;&lt;br&gt;&lt;b&gt;Folders: &lt;/b&gt;Put roms under /sdcard/rin (or "external-storage-directory"/rin) &lt;br&gt;&lt;br&gt;&lt;b&gt;Zip- Support: &lt;/b&gt;Zipped and GZipped Roms are supported. Note: For Zip- files, there needs to be a file in the zip with the ending .gb, .gbc or .sgb in the root folder. Sram and states are gzipped. &lt;br&gt;&lt;br&gt;&lt;b&gt;States: &lt;/b&gt;Are used to save the game progress, respectively to load it again. To load a state, first load the corresponding rom and then the state. States are saved into rin/save/sav.{"rom-name"}&lt;br&gt;&lt;br&gt;&lt;b&gt;Autocopy Roms: &lt;/b&gt;If enabled, roms are copied to /sdcard/rin (or "external-storage"/rin). &lt;br&gt;&lt;br&gt;&lt;b&gt;Sticky Keys: &lt;/b&gt;When dragging the finger out of a touch-key zone instead of releasing it, the key remains pressed. To realease it press it again normally.&lt;br&gt;&lt;br&gt;&lt;b&gt;Rewind: &lt;/b&gt;Hold the back key pressed to rewind&lt;br&gt;&lt;br&gt;&lt;b&gt;Config: &lt;/b&gt;Local config means rom specific, global config is for the whole app. The global palette, the autocopy rom, the framerate marker and the scale method are the only global settings. All other settings are local.&lt;br&gt;&lt;br&gt;&lt;b&gt;Screenshots: &lt;/b&gt;Are saved to rin/save/sav.{"rom-Name"}.</string>
+	<string name="donate">Donate: Your appreciation would be greatly appreciated</string>
+	<string name="help_fdmenu_text">&lt;h4&gt;Help&lt;/h4&gt;&lt;br&gt;This is the filebrowser. Browse to any place where supported filetypes are stored. If you see a empty list this means there are no supported filetypes in this folder. Click "Up" to go a directory level up. Directories are colored turquoise and files are colored white</string>
+	<string name="help_fdsavemenu_text">&lt;h4&gt;Help&lt;/h4&gt;&lt;br&gt;This is the filebrowser to save files. Browse to the folder where you want to store the file. Then enter a name in the textfield and hit save. Up goes a directory level up. Files are colored white and folders turqouise.</string>	
+	<string name="fd_initial_no_supported_roms">&lt;h4&gt;No Roms&lt;/h4&gt;No supported files in the initial directory (sdcard/rin or "external-storage"/rin). In order to play, a rom must be provided (with file ending .gb, .gbc or .sgb or a zip file containing one of these files). Its recommended to put them in this folder, however it is possible to browse the contents of the filesystem of your device (hit "Up" to go a directory level up) and load a rom from some other folder, or open a supported file with this application (not recommended). &lt;br&gt;&lt;br&gt;This application does not provide Gameboy executables (called roms) nor any facility to download them for legal and other reasons. It is technically still illegal to download roms for example via a google search, altough it is considered as a tolerated practice, since no new gameboy roms are sold anymore.</string>
+	<string name="screenshot_taken">Capture d'écran faite</string>
+</resources>

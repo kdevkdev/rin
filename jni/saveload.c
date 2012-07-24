@@ -10,11 +10,6 @@ int bTurbo=0;
 //uint16_t thumb_tmp[160*144];
 struct tm * state_tmp_time;
 
-int remove_file(const char *fullpath)
-{
-	remove(fullpath);
-	return 0;
-}
 int rom_load(char * rpath)
 {
 	char tmp[PATH_MAX];
@@ -29,7 +24,7 @@ int rom_load(char * rpath)
 	bTurbo = 0;
 	
 
-
+	gb_destroy();
 	gb_init();
 	
 	// wèµœt@Cð[h·éB by ruka
@@ -39,8 +34,7 @@ int rom_load(char * rpath)
 		return -1;
 	}
 
-	sprintf(tmp, "%s.sram", RomPath);
-	ramsize = load_sram(tmp);
+	ramsize = load_sram(SramPath);
 	
 	if (!gb_load_rom(rom_image, romsize, sram_space, ramsize)){
 		renderer_set_msg("ROM Load Failed");
@@ -65,16 +59,24 @@ int rom_load(char * rpath)
 }
 int state_load(char* path)
 {	
-	gzFile fd = gzopen(path,"rb");
+	/*FILE * fd = fopen(path,"rb");
 	if (!fd){
 		strcat(path,".gz");
-		fd = gzopen(path,"rb");
+		fd = fopen(path,"rb");
 		if (!fd)
 			return 0;
 	}
 
 	gb_restore_state(fd,NULL);
-	gzclose(fd);
+	fclose(fd);*/
+	
+	byte * buf;
+
+	
+	jfile fd = jfopen(env_game_thread, path, JF_MODE_READ, NULL, 0);
+	gb_restore_state(fd, NULL);
+	jfclose(env_game_thread, fd);
+
 	
 	if(rom_get_info()->gb_type == 1)
 		lcd_set_mpal(0);
@@ -108,10 +110,29 @@ int state_save(char* path)
 		return 0;
 	}
 	gb_save_state(buf);
+
+	jfile fd = jfopen(env_game_thread, path, JF_MODE_WRITE | JF_MODE_OVERWRITE | JF_MODE_NEW, NULL, 0);
 	
-	char temp[PATH_MAX];
+	if(fd)
+	{
+		jfwrite(env_game_thread, fd, buf, size);
+		jfclose(env_game_thread, fd);
+	}
 	
-	int ret;
+	free(buf);
+	
+	char tmp[PATH_MAX];
+	if(rom_has_battery())
+	{
+		sprintf(tmp, "%s.sram.gz", RomPath);
+		save_sram(get_sram(), rom_get_info()->ram_size,tmp);
+	}
+	
+	return size;
+	
+	//char temp[PATH_MAX];
+	
+	//int ret;
 
 /*	if (0)//setting.compress)
 	{
@@ -132,9 +153,9 @@ int state_save(char* path)
 			remove(temp);
 			return 0;
 		}
-	}*/
-	//else
-	//{
+	}
+	else
+	{
 		FILE * fd = fopen(path, "w");
 		if (fd<0)
 		{
@@ -154,11 +175,12 @@ int state_save(char* path)
 			//remove_file(path);
 		}
 		return ret;
-	//}
+	}*/
 }
 int save_sram(byte *buf,int size, char * path)
 {
 	const int sram_tbl[]={1,1,1,4,16,8};
+	
 
 	/*char *p = strrchr(SavePath, '.');
 	if (!strcmp(p,".gz")){
@@ -166,10 +188,10 @@ int save_sram(byte *buf,int size, char * path)
 			remove_file(SavePath);
 	}else{
 		if(setting.compress)*/
-			remove_file(path);
-	//}
+			//remove_file(path);
+	/*}
 	
-	/*sprintf(SavePath, "%sSAVE/%s.sav", RinPath, RomName);
+	sprintf(SavePath, "%sSAVE/%s.sav", RinPath, RomName);
 	if (setting.compress) 
 	{
 		strcat(SavePath, ".gz");
@@ -190,8 +212,8 @@ int save_sram(byte *buf,int size, char * path)
 		gzCreate(fd, buf, sram_size);
 		fclose(fd);
 		cheat_create_cheat_map();
-	}else*/
-//	{
+	}else
+	{
 		FILE * fd = fopen(path, "w");
 		if(!fd)
 		{
@@ -208,13 +230,30 @@ int save_sram(byte *buf,int size, char * path)
 		fclose(fd);
 		cheat_create_cheat_map();
 
-	//}
+	}*/
+	cheat_decreate_cheat_map();
+	
+	int tmp;
+	
+	jfile fd = jfopen(env_game_thread, path, JF_MODE_OVERWRITE | JF_MODE_NEW | JF_MODE_WRITE, NULL,  0);
+	cheat_decreate_cheat_map();
+	
+	jfwrite(env_game_thread,fd, buf, 0x2000*sram_tbl[size]);
+	
+	if ((rom_get_info()->cart_type>=0x0f)
+		&& (rom_get_info()->cart_type<=0x13)){
+		int tmp = renderer_get_timer_state();
+		jfwrite( env_game_thread, fd, &tmp, sizeof(int));
+	}
+	jfclose(env_game_thread, fd);
+	cheat_create_cheat_map();
+		
 	return 1;
 }
 
 int load_sram(char * path)
 {
-	FILE* fd = fopen(path, "rb");
+	jfile fd = jfopen(env_game_thread, path, JF_MODE_READ, NULL, 0);
 	
 	/*if(!fd){
 		strcat(SavePath, ".gz");
@@ -222,10 +261,13 @@ int load_sram(char * path)
 	}*/
 	
 	if(!fd)
+	{
 		return 0;
+	}
 	
-	int ramsize = fread(sram_space,1,16*0x2000+4,fd);
-	fclose(fd);
+	int ramsize = jfread(env_game_thread, fd, sram_space, 16*0x2000+4);
+	jfclose(env_game_thread, fd);
+	
 	if(ramsize & 4)
 	{
 		renderer_set_timer_state(*(int*)(sram_space+ramsize-4));
@@ -322,13 +364,15 @@ void save_config_glob(char * path)
 
 	//__android_log_print(ANDROID_LOG_DEBUG, "org.rin", "path in save_config_glob: %s",path);
 
-	FILE * fd = fopen(path, "w");
+	jfile  fd = jfopen(env_game_thread, path, JF_MODE_NEW | JF_MODE_OVERWRITE | JF_MODE_WRITE, NULL, 0);
 	if(!fd)
+	{
 		return;
+	}
 
 
-	fwrite(&setting2, sizeof(setting2),1,fd);
-	fclose(fd);
+	jfwrite(env_game_thread, fd, &setting2, sizeof(setting2));
+	jfclose(env_game_thread, fd);
 }
 void load_config_glob(char * path)
 {
@@ -337,15 +381,17 @@ void load_config_glob(char * path)
 
 	//__android_log_print(ANDROID_LOG_DEBUG, "org.rin", "path in load_config_glob: %s",path);
 
-	FILE * fd = fopen(path, "r");
-	if(!fd){
+	jfile fd = jfopen(env_game_thread, path, JF_MODE_READ, NULL, 0);
+	
+	if(!fd)
+	{
 		init_config_glob();
 		return;
 	}
 	
 	memset(&setting2, 0, sizeof(setting2));
-	fread(&setting2,1, sizeof(setting2),fd);
-	fclose(fd);
+	jfread(env_game_thread, fd, &setting2, sizeof(setting2));
+	jfclose(env_game_thread, fd);
 
 	memcpy(m_pal16[PAL_CUSTOM_GLOBAL],setting2.custom_palette, sizeof(short)*4*3);
 	check_config_glob();
@@ -420,15 +466,18 @@ void load_config(char * path)
 
 	//__android_log_print(ANDROID_LOG_DEBUG, "org.rin", "path in load_config: %s",path);
 
-	FILE * fd = fopen(path, "r");
-	if(!fd){
+	jfile fd = jfopen(env_game_thread, path, JF_MODE_READ, NULL, 0);
+
+	if(!fd)
+	{
 		init_config();
 		return;
 	}
 	
 	memset(&setting, 0, sizeof(setting));
-	fread(&setting,1, sizeof(setting),fd);
-	fclose(fd);
+	jfread(env_game_thread, fd, &setting, sizeof(setting));
+	jfclose(env_game_thread, fd);
+
 	tmpsetting = setting;
 	memcpy(m_pal16[PAL_CUSTOM_LOCAL],setting.custom_palette, sizeof(short)*4*3);
 	check_config();
@@ -448,8 +497,7 @@ void save_config(char * path)
 	{
 		if(rom_has_battery())
 		{
-			sprintf(tmp, "%s.sram", RomPath);
-			save_sram(get_sram(), rom_get_info()->ram_size,tmp);
+			save_sram(get_sram(), rom_get_info()->ram_size,SramPath);
 		}
 	}
 
@@ -466,13 +514,15 @@ void save_config(char * path)
 		return;
 
 
-	FILE * fd = fopen(path, "w");
-	if(!fd)
-		return;
+	jfile fd = jfopen(env_game_thread, path, JF_MODE_NEW | JF_MODE_OVERWRITE | JF_MODE_WRITE, NULL, 0);
 	
+	if(!fd)
+	{
+		return;
+	}
 
-	fwrite(&setting, sizeof(setting),1,fd);
-	fclose(fd);
+	jfwrite(env_game_thread, fd, &setting, sizeof(setting));
+	jfclose(env_game_thread, fd);
 
 	tmpsetting = setting;
 }

@@ -1,11 +1,17 @@
 package org.rin;
 
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FilenameFilter;
+import java.util.zip.GZIPOutputStream;
 
 import org.rin.AboutDialog.OnAboutDialogListener;
 import org.rin.AutosaveDialog.OnAutosaveDialogListener;
-import org.rin.HelpDialog.OnHelpDialogListener;
+import org.rin.TextDialog.OnTextDialogListener;
 import org.rin.PaletteDialog.OnPaletteDialogListener;
 import org.rin.ScreenDialog.OnScreenDialogListener;
 import org.rin.SpeedDialog.OnSpeedDialogListener;
@@ -32,6 +38,7 @@ import android.view.View;
 public class rin extends Activity 
 {
 	RinService rinService; 
+	
 
 	private static final int GET_PATH_ROM = 3;
 	private static final int GET_PATH_STATE_LOAD = 4;
@@ -78,6 +85,64 @@ public class rin extends Activity
 	public RinService getRinService() 
 	{
 		return rinService;
+	}
+	private void fileMigrater()
+	{
+		try
+		{
+			//this function does use some files to migrate from old to new versions
+			//more specifically it does for now move *.srams savs into the corresponding save folder and copresses them
+			
+			File file = new File(RinService.getRinPath());
+			FilenameFilter sramfilter = new FilenameFilter() 
+			{
+			    public boolean accept(File dir, String name) {
+			       return (name.endsWith(".sram") || name.endsWith(".sram.gz"));
+			    }
+			};
+			File[] childs = file.listFiles(sramfilter);
+			
+			for (File item:childs)
+			{
+				FileInputStream in = new FileInputStream(item);
+				int size = (int) item.length();
+				
+				String name = item.getName().substring(item.getName().lastIndexOf("/") + 1);
+				name = name.substring(0, name.lastIndexOf(".sram"));
+				
+				String romSavePath = RinService.constructRomSavePath(name);
+				
+				File test = new File(romSavePath);
+				
+				if(!test.exists())
+				{
+					test.mkdirs();
+				}
+				
+				FileOutputStream ot = new FileOutputStream(romSavePath + "/" + "sram.gz");
+				BufferedOutputStream sout = null;
+				
+				if(item.getName().endsWith(".sram"))
+				{
+					GZIPOutputStream out = new GZIPOutputStream(ot);
+					sout = new BufferedOutputStream(out);
+				}
+				else if(item.getName().endsWith(".sram.gz"))
+				{
+					sout = new BufferedOutputStream(ot);
+				}
+				BufferedInputStream sin = new BufferedInputStream(in);
+				byte [] buffer = new byte[size];
+				sin.read(buffer, 0, size);
+				sout.write(buffer, 0, size);
+				sout.close();
+				item.delete();
+			}
+		}
+		catch(Exception e)
+		{
+			
+		}
 	}
 	private void connectRinService()
 	{
@@ -368,7 +433,6 @@ public class rin extends Activity
         new File(RinService.getRinPath()).mkdir();
 
         //Log.d("org.rin", "onCreate()");
-        
         if(inState != null)
         {
         	appState = inState.getInt("APP_STATE");
@@ -378,19 +442,19 @@ public class rin extends Activity
         {
         	appState = APP_STATE_UNDEFINED;
         }
-        
+        fileMigrater();
         
         if(appState == APP_STATE_UNDEFINED)
         {
         	File f = new File(RinService.getRinPath()+".config_global");
             if(!f.exists())
             {	
-        		HelpDialog helpDialog = new HelpDialog(this,this, new OnHelpDialogListener(){
+        		TextDialog helpDialog = new TextDialog(this,this, new OnTextDialogListener(){
 
     				public void onOk(int id) 
     				{
     					startup();
-   				}});
+   				}}, R.string.help_menu_text);
         		helpDialog.show(this);
             }
             else
@@ -446,10 +510,10 @@ public class rin extends Activity
     	{
     		//only do this if not yet emulating
     		appState = APP_STATE_FILE_BROWSING_FOR_ROM;
-    		initializeFileDialog(FileLoadDialog.class, RinService.getRinPath(), GET_PATH_ROM,new String[] {"gb","gbc"}, null);
+    		initializeFileDialog(FileLoadDialog.class, RinService.getRinPath(), GET_PATH_ROM,new String[] {"gb","gbc","zip","gz"}, null, true);
     	}
     }
-    private void initializeFileDialog(Class <?> cls,String loc, int reqCode, String[] extArray, String root)
+    private void initializeFileDialog(Class <?> cls,String loc, int reqCode, String[] extArray, String root, boolean warn)
     {
         Intent FD = new Intent(this,cls);
         FD.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -459,7 +523,14 @@ public class rin extends Activity
         bundle.putString("startLocation", loc);
         
         if(root != null)
+        {
         	bundle.putString("root",root);
+        }
+        
+        if(warn)
+        {
+        	bundle.putBoolean("WARN", true);
+        }
         
         FD.putExtras(bundle);
 
@@ -467,7 +538,11 @@ public class rin extends Activity
     }
     private void handleActivityResult(int requestCode, int resultCode, Intent  data)
     {
-    	if(resultCode == RESULT_CANCELED)
+    	if(resultCode == FileDialog.RESULT_EXIT)
+    	{
+    		exit();
+    	}
+    	else if(resultCode == RESULT_CANCELED)
     	{
     		//do nothing
     	}
@@ -475,11 +550,13 @@ public class rin extends Activity
 	   	{
 	    	switch(requestCode)
 	    	{
+	    		
 	    		case GET_PATH_ROM:
 	    	    	
 	                rinService.wakeNative();
 	    			rinService.loadRom(data.getStringExtra("path"));
 	    			appState = APP_STATE_EMULATING;
+	    			stayPaused = false;
 	 
 	    		break;
 	    		
@@ -609,7 +686,8 @@ public class rin extends Activity
 
     }
     @Override
-    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+    public boolean onKeyLongPress(int keyCode, KeyEvent event) 
+    {
         if (keyCode == KeyEvent.KEYCODE_BACK) 
         {
         	
@@ -629,7 +707,8 @@ public class rin extends Activity
     	}
     };
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) 
+    {
     	
     	rinMenu = menu;
         MenuInflater inflater = getMenuInflater();
@@ -640,6 +719,53 @@ public class rin extends Activity
         setBooleanMenu(R.id.menu_autocopy_rom, rinService.getAutoCopyRom());
         
         return true;
+    }
+    @Override
+    public boolean onPrepareOptionsMenu (Menu menu) 
+    {
+
+    	//menu.setGroupEnabled(R.id.menu_group_active_rom, true);
+    	//change menu according to app state (rom type, rom laoded)
+    	if(rinService.romGetLoaded())
+    	{
+    		menu.setGroupEnabled(R.id.menu_group_all, true);
+    		menu.setGroupVisible(R.id.menu_group_all, true);
+    		
+        	switch(rinService.romGetType())
+        	{
+        		case RinService.MODE_GB:
+        		break;
+
+        		case RinService.MODE_SGB:
+        		case RinService.MODE_GBC:
+        			MenuItem item = menu.findItem(R.id.menu_gb_palette);
+        			item.setEnabled(false);
+        			item.setVisible(false);
+        		break;
+        		
+        		default:
+        			//menu.setGroupEnabled(R.id.menu_group_active_rom, false);
+        		break;
+        	}
+    		
+    	}
+    	else
+    	{
+    		menu.setGroupEnabled(R.id.menu_group_all, false);
+    		menu.setGroupVisible(R.id.menu_group_all, false);
+    		
+    		
+    		menu.findItem(R.id.menu_about).setVisible(true);
+    		menu.findItem(R.id.menu_exit).setVisible(true);
+    		menu.findItem(R.id.menu_help).setVisible(true);
+    		menu.findItem(R.id.menu_load_rom).setVisible(true);
+    		
+    		menu.findItem(R.id.menu_about).setEnabled(true);
+    		menu.findItem(R.id.menu_exit).setEnabled(true);
+    		menu.findItem(R.id.menu_help).setEnabled(true);
+    		menu.findItem(R.id.menu_load_rom).setEnabled(true);
+    	}
+    	return super.onPrepareOptionsMenu(menu);
     }
     void setSoundMenuItemText()
     {
@@ -655,9 +781,13 @@ public class rin extends Activity
         MenuItem item = rinMenu.findItem(R.id.menu_turbo);
         
         if(rinService.getTurbo() == true)	
+        {
         	item.setTitle(getString(R.string.turbo) + ": " + getString(R.string.on));
+        }
         else
+        {
         	item.setTitle(getString(R.string.turbo) + ": " + getString(R.string.off));
+        }
     }
     void setBooleanMenu(int id, boolean state)
     {
@@ -690,6 +820,29 @@ public class rin extends Activity
     			return false;
     	}
     }
+    void exit()
+    {
+    	if(rinService != null)
+	    {
+			rinService.wakeNative();
+			stayPaused = true;
+			Context con = getApplicationContext();
+	
+			try
+			{
+				con.unbindService(mServiceConnection);
+			}
+			catch(Exception IllegalArgumentException)
+			{
+				//Log.d("org.rin","service already unbound");
+			}
+	
+			con.stopService(rinServiceIntent);
+	    }
+		finish();
+		
+		//Log.d("org.rin", "menu_exit");
+    }
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event)
     {    	
@@ -709,7 +862,7 @@ public class rin extends Activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) 
     {
-    	
+    	stayPaused = false;
         // Handle item selection
         switch (item.getItemId()) 
         {
@@ -717,14 +870,15 @@ public class rin extends Activity
     		appState = APP_STATE_HELP_MENU;
     		stayPaused = true;
     		
-    		HelpDialog helpDialog = new HelpDialog(this,this, new OnHelpDialogListener(){
+    		TextDialog helpDialog = new TextDialog(this,this, new OnTextDialogListener(){
 
 				public void onOk(int id) 
 				{
 		        	stayPaused = false;
 		        	rinService.wakeUnpause();
 					appState = APP_STATE_EMULATING;	
-				}} );
+				}}, R.string.help_menu_text);
+    		
     		helpDialog.show(this);
     	break;
         	case R.id.menu_about:
@@ -732,13 +886,6 @@ public class rin extends Activity
         		stayPaused = true;
         		
         		AboutDialog aboutDialog = new AboutDialog(this,this, new OnAboutDialogListener(){
-
-					public void onCancel() 
-					{
-			        	stayPaused = false;
-						rinService.wakeUnpause();
-						appState = APP_STATE_EMULATING;
-					}
 
 					public void onOk(int id) 
 					{
@@ -787,6 +934,7 @@ public class rin extends Activity
 	        	rinService.wakeNative();
 	        	rinService.reset();
 	        	appState= APP_STATE_EMULATING;
+	        	stayPaused = false;
         	break;
         	
         	case R.id.menu_turbo:
@@ -863,7 +1011,7 @@ public class rin extends Activity
         	break;
 	    	case R.id.menu_screenshot:
 	    		rinService.wakeNative();
-	    		rinService.takeScreenShot();
+	    		rinView.screenshot(rinService.getRomSaveStatePath()+"/screen"+ DateUtils.now() + ".png");
 	    		appState = APP_STATE_EMULATING; 
 	    	break;
 	    	        	
@@ -879,7 +1027,7 @@ public class rin extends Activity
                 rinService.wakeNative();
                 rinService.saveConfig();
                 rinService.sleepNative();
-                initializeFileDialog(FileLoadDialog.class, RinService.getRinPath(), GET_PATH_ROM,new String[] {"gb", "gbc"}, null);
+                initializeFileDialog(FileLoadDialog.class, RinService.getRinPath(), GET_PATH_ROM,new String[] {"gb","gbc","zip","gz"}, null, false);
         	break;
         	
         	
@@ -894,7 +1042,7 @@ public class rin extends Activity
     				tmp = new File(rinService.getRomSaveStatePath());
 	        		if(tmp.exists())
 	        		{
-	        			initializeFileDialog(FileLoadDialog.class,rinService.getRomSaveStatePath(), GET_PATH_STATE_LOAD, new String[] {"stat"}, rinService.getRomSaveStatePath());
+	        			initializeFileDialog(FileLoadDialog.class,rinService.getRomSaveStatePath(), GET_PATH_STATE_LOAD, new String[] {"stat", "stat.gz"}, rinService.getRomSaveStatePath(), false);
 	        		}
 	        		else
 	        		{
@@ -917,7 +1065,7 @@ public class rin extends Activity
                 	new File( rinService.getRomSaveStatePath()).mkdir();
                 	pad_state = 0;
                 	stayPaused = true;
-                	initializeFileDialog(FileSaveDialog.class,rinService.getRomSaveStatePath(), GET_PATH_STATE_SAVE, new String[] {"stat"}, rinService.getRomSaveStatePath());
+                	initializeFileDialog(FileSaveDialog.class,rinService.getRomSaveStatePath(), GET_PATH_STATE_SAVE, new String[] {"stat.gz"}, rinService.getRomSaveStatePath(), false);
         		}
         		else
         		{
@@ -928,24 +1076,7 @@ public class rin extends Activity
             
         	case R.id.menu_exit:
         		
-        		rinService.wakeNative();
-        		stayPaused = true;
-        		Context con = getApplicationContext();
-
-        		try
-        		{
-        			con.unbindService(mServiceConnection);
-        		}
-        		catch(Exception IllegalArgumentException)
-        		{
-        			//Log.d("org.rin","service already unbound");
-        		}
-
-        		con.stopService(rinServiceIntent);
-        		finish();
-        		
-        		//Log.d("org.rin", "menu_exit");
-        		break;
+        		exit();
                 
 	        default:  
 	        	break;

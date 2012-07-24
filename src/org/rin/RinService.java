@@ -17,6 +17,9 @@ import android.util.Log;
 
 public class RinService extends Service 
 {
+	public static final int MODE_GB = 1;
+	public static final int MODE_SGB = 2;
+	public static final int MODE_GBC = 3;
 
 	private Order order;
 	private String rinPath;
@@ -26,7 +29,8 @@ public class RinService extends Service
 	private String romSaveStatePath;
 	private boolean mute;
 
-	public String getRomSaveStatePath() {
+	public String getRomSaveStatePath() 
+	{
 		return romSaveStatePath;
 	}
 
@@ -34,7 +38,8 @@ public class RinService extends Service
 	private RinThread rinThread;
 	private boolean mRunning;
 	
-	public boolean isRunning() {
+	public boolean isRunning() 
+	{
 		return mRunning;
 	}
 	private void startup()
@@ -60,8 +65,8 @@ public class RinService extends Service
         order = new Order();
         
         rinPath = getRinPath();
-        savePath = rinPath + "save/";
-		new File(savePath).mkdir();
+        savePath = getSavePath();
+		new File(savePath).mkdirs();
 		
     	init();     
     	audio = getAudio();
@@ -98,6 +103,14 @@ public class RinService extends Service
 	public static String getRinPath()
 	{
         return  Environment.getExternalStorageDirectory().getAbsolutePath() + "/rin/";
+	}
+	public static String getSavePath()
+	{
+		return  getRinPath() + "save/";
+	}
+	public static String constructRomSavePath(String romName)
+	{
+		return getSavePath() +  "sav." + romName;
 	}
 	@Override
 	public void onDestroy() 
@@ -201,7 +214,7 @@ public class RinService extends Service
     }
     public void reset()
     {
-    	if(!romPath.equals("") && romGetLoaded())
+    	if(romPath != null && !romPath.equals("") && romGetLoaded())
     	{
     		loadConfig();
     		order.stringorderBlocking(Order.O_LOAD_ROM,romPath);
@@ -230,11 +243,13 @@ public class RinService extends Service
 			romPath = rinPath + romName;
 		}
 		
-		romSaveStatePath = savePath + "sav." + romName;
+		romSaveStatePath = constructRomSavePath(romName);
+		
 		new File(romSaveStatePath).mkdir();
 
 		loadConfig();
-		setAutosavePath(romSaveStatePath + "/autosave.stat");
+		setAutosavePath(romSaveStatePath + "/autosave.stat.gz");
+		setSramPath(romSaveStatePath + "/sram.gz");
 		order.stringorderBlocking(Order.O_LOAD_ROM,romPath);
 
 		return 1;
@@ -255,7 +270,7 @@ public class RinService extends Service
     
     public void takeScreenShot()
     {
-    	order.stringorderBlocking(Order.O_TAKESCREENSHOT, romSaveStatePath +"/screen"+ DateUtils.now() + ".png");
+    	//order.stringorderBlocking(Order.O_TAKESCREENSHOT, romSaveStatePath +"/screen"+ DateUtils.now() + ".png");
     }
     public void saveConfig()
     {
@@ -296,7 +311,9 @@ public class RinService extends Service
     public native boolean getShowFPS();
     
     public native boolean romGetLoaded();
+    public native int romGetType();
     public native void setAutosavePath(String  path);
+    public native void setSramPath(String path);
     
     public native void toogleAutoCopyRom();
     public native boolean getAutoCopyRom();

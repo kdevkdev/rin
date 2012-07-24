@@ -2,11 +2,14 @@ package org.rin;
 
 
 
+import java.io.FileOutputStream;
+
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -38,7 +41,23 @@ class RinView extends SurfaceView implements SurfaceHolder.Callback
 
         setFocusable(true); // make sure we get key events
     }
-    
+    public void screenshot(String filename)
+    {
+    	if(mBitmap != null && ! mBitmap.isRecycled())
+    	
+    	try 
+    	{
+    	       FileOutputStream out = new FileOutputStream(filename);
+    	       mBitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+    	       Notification.showNotificationTimed(this, getString(R.id.screenshot_taken)  ,1000);
+    	} 
+    	catch (Exception e) 
+    	{
+    	       Log.e("org.rin","rinview: exception in screenshot", e);
+    	}
+
+
+    }
     public  void  doDrawSingle() 
     {
        Canvas c=null;

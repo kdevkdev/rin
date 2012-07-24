@@ -112,14 +112,40 @@ symbols: - suggestion, *done, !rejected, --comment
 	- *find a way to center the rinview, especially on big displays
 	- option to stretch rinview to availaible space ?
 
+-*use lodepng instead of libpng because of size
 ----------------------------------------release 1.0--------------------------------------------------------
+-*javatize screenshot -> reduce binsize by approx 100kiB (~ 25kiB per library) by getting rid of lodepng
+-*fixed bug where emulation would stay paused when loading another rom and then executing certain menu entries.
+-*hopefully fix sound bugs when rewinding or loading a state where sound was muted on the gameboy side
+-*fix bug where rinservice.reset would crash when no rom yet loaded (romPath = null)
+-*zip and gzip file support  & javatize all file i/o for state and rom loading / saving (and config?)
+	--file io still left:
+		-*delete file in save_sram and remove_file in filer.c 
+		-warn users about sram being renamed and gzipped and srams moved
+		-*save and load configs
+		-*save and load sram
+-*only display relevant menu items based on the context (ie rom loaded, type of rom loaded) -- note its not possible to proberly gray out the icon menu items so go for the hide solution
+-*introduce a menu in the filedialog with some help text
+-french support and some ui string fixes as well as updated help concerning zip support
+-*(merge cFile and FileProvider (introduce the option to query filesize uncompressed and compressed in cFile - fill them in in the constructor)
+-*grey out menu items that make no sense - all items except rom load and exit when no rom is loaded, and pallete when gbc or sgb rom loaded -best start with all greyed out
+-*introduce help item in filebrowser when clicking menu
+-feedback on screenshot taken
+
+
+
+
+----------------------------------------release 1.1--------------------------------------------------------
+-display warning when no rom found when displaying initial rom folder
+
+-auto iterate autosaves (autosave01.stat.gz, autosave02.stat.gz ...)
+
 -direction button indicator
 -cheat support
 -compressed rom loading, compressed state saving and  loading
 
 -retain state of menu when restarting activity (orientation change)
 
--*use lodepng instead of libpng because of size
 
 -opengl render path and scaling
 

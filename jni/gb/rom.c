@@ -27,6 +27,7 @@ byte *dat;
 byte *sram;
 byte *first_page;
 bool b_loaded;
+//byte * rom_image;
 byte rom_image[MAX_ROM_SIZE];
 byte sram_space[16*0x2000+4];
 int sgb_mode, org_gbtype;
@@ -55,7 +56,7 @@ int rom_get_sram_size()
 	return 0x2000*tbl_ram[info.ram_size];
 }
 
-bool rom_load_rom(const byte *buf,int size,byte *ram,int ram_size)
+bool rom_load_rom(byte *buf,int size,byte *ram,int ram_size)
 {
 	int fd;
 	int tbl[]={2,4,8,16,32,64,128,256,512};
@@ -97,6 +98,7 @@ bool rom_load_rom(const byte *buf,int size,byte *ram,int ram_size)
 	//dat=(byte*)malloc(size);
 	dat = rom_image;
 	memcpy(dat,buf,size);
+	dat = buf;
 	first_page=dat;
 
 	word sum=0;

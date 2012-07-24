@@ -22,7 +22,7 @@
 
 #include "../inc/main.h"
 
-int now_gb_mode;
+int now_gb_mode = 0;
 struct gb_regs g_regs;
 struct gbc_regs cg_regs;
 
@@ -74,6 +74,15 @@ void gb_set_fp(word * fp)
 word * gb_get_fp(void)
 {
 	return vframe;
+}
+void gb_destroy()
+{
+	if(rom_get_loaded())
+	{
+		//jfile_free(env_game_thread,rom_image);
+		//rom_image = NULL;
+		rom_init();
+	}
 }
 void gb_reset()
 {
@@ -137,7 +146,7 @@ void gb_set_skip(int frame)
 	skip_buf=frame;
 }
 
-bool gb_load_rom(const byte *buf,int size,byte *ram,int ram_size)
+bool gb_load_rom(byte *buf,int size,byte *ram,int ram_size)
 {
 	if (rom_load_rom(buf,size,ram,ram_size)){
 		gb_reset();
@@ -294,11 +303,13 @@ size_t gb_save_state(byte *out)
 		memcpy(out, buf, len); \
 		buf += len; \
 	}else{ \
-		gzread(fd, out, len); \
+		/*gzread(fd, out, len);*/ \
+		/*fread(out,1,len,fd);\*/\
+		jfread(env_game_thread, fd, out, len);\
 	} \
 }
 
-void gb_restore_state(gzFile fd, const byte *buf)
+void gb_restore_state(FILE * fd, const byte *buf)
 {
 	const int tbl_ram[]={1,1,1,4,16,8}; // 0‚Æ1‚Í•ÛŒ¯
 	const int has_bat[]={0,0,0,1,0,0,1,0,0,1,0,0,1,1,0,1,1,0,0,1,0,0,0,0,0,0,0,1,0,1,1,0}; // 0x20ˆÈ‰º

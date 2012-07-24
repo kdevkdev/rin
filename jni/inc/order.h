@@ -42,7 +42,7 @@ JNIEXPORT int JNICALL Java_org_rin_Order_giveInt(JNIEnv *envs, jobject this, jin
 
 
 //internal use
-void order_take_screenshot(char * filename);
+//void order_take_screenshot(char * filename);
 
 #endif
 

@@ -1,3 +1,4 @@
 -davex for rewinding
 -yukuku for color picker: http://code.google.com/p/android-color-picker/
 -homer and various others for rin
+-octal for the gameboy icon used in the big icon on google play

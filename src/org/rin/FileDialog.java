@@ -3,6 +3,10 @@ package org.rin;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
+
+import org.rin.AboutDialog.OnAboutDialogListener;
+import org.rin.TextDialog.OnTextDialogListener;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,6 +14,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -109,7 +116,8 @@ class FileAdapter extends ArrayAdapter<File> {
 
 	//File [] items;
 	Context Context;
-	public FileAdapter(Context context, int textViewResourceId) {
+	public FileAdapter(Context context, int textViewResourceId) 
+	{
 		super(context, textViewResourceId);
 		Context = context;
 	}
@@ -153,8 +161,8 @@ class FileAdapter extends ArrayAdapter<File> {
 	}
 	
 }
-
-public abstract class FileDialog extends ListActivity{
+public abstract class FileDialog extends ListActivity
+{
 	
 	private ListView lv;
 	private String startLocation;
@@ -165,15 +173,70 @@ public abstract class FileDialog extends ListActivity{
 	protected String currentDir;
 	
 	private String root;
+	private boolean warn;
+	private boolean no_supported;
+	
+	public static final int RESULT_EXIT = -33;
 
 	@Override
-	public void onCreate(Bundle inState){
+	public void onCreate(Bundle inState)
+	{
 		super.onCreate(inState);
+		
+
 	}
-		
-		
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+       MenuInflater inflater = getMenuInflater();
+       inflater.inflate(R.menu.filedialog_menu, menu);
+       return true;
+	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) 
+    {
+        // Handle item selection
+        switch (item.getItemId())
+        {
+        	case R.id.fdmenu_help:
+        		TextDialog helpDialog = new TextDialog(this,this, new OnTextDialogListener(){
+
+    				public void onOk(int id) 
+    				{
+    				}}, R.string.help_fdmenu_text);
+        		
+        		helpDialog.show(this);
+        	break;
+        	
+        	case R.id.fdmenu_about:
+        		
+        		AboutDialog aboutDialog = new AboutDialog(this,this, new OnAboutDialogListener(){
+
+					public void onOk(int id) 
+					{
+						
+					}});
+        		
+        		aboutDialog.show(this);
+        		
+        	break;
+        	
+        	case R.id.fdmenu_exit:
+    			Intent tmp = new Intent();
+    				
+    			setResult(RESULT_EXIT, tmp);
+    			finish();
+        		
+    			break;
+        	
+        	default:
+        		break;
+        }
+		return true;
+    }
 	public void init(Bundle inState)
 	{
+		no_supported = false;
 		if(inState != null)
 		{
 			startLocation = inState.getString("START_LOCATION");
@@ -187,6 +250,7 @@ public abstract class FileDialog extends ListActivity{
 			startLocation = bundle.getString("startLocation");
 			root = bundle.getString("root");
 			extFilter = bundle.getCharSequenceArray("extFilter");
+			warn = bundle.getBoolean("WARN");
 			
 		}
 		if(startLocation == null)
@@ -203,7 +267,9 @@ public abstract class FileDialog extends ListActivity{
 			extFilter[0] = "";
 		}
 		if(currentDir == null)
+		{
 			currentDir = startLocation;
+		}
 
 		Filter = new ExtFilter(extFilter);//
 		
@@ -212,10 +278,23 @@ public abstract class FileDialog extends ListActivity{
 		lv = this.getListView();
 		setListAdapter(fileAdapter);
 		populateList(new File(currentDir));
+		
+		if(no_supported)
+		{
+    		TextDialog nofoundDialog = new TextDialog(this,this, new OnTextDialogListener()
+    		{
+
+				public void onOk(int id) 
+				{
+				}}, R.string.fd_initial_no_supported_roms);
+    		
+    		nofoundDialog.show(this);
+		}
 	}
 
 	public void populateList(File dir)
 	{
+		boolean supfound = false;
 		if(!dir.getAbsolutePath().startsWith(root))
 		{
 			dir = new File(root);
@@ -234,10 +313,23 @@ public abstract class FileDialog extends ListActivity{
 		flist = dir.listFiles(Filter);
 		
 		
-		if(flist != null){
+		if(flist != null)
+		{
 			for(int i =0; i< flist.length; i++)
 			{
 				fileAdapter.add(flist[i]);
+				
+				for(CharSequence item:extFilter)
+				{
+					if(flist[i].getName().endsWith("." + item.toString()))
+					{
+						supfound = true;
+					}
+				}
+			}
+			if(!supfound && warn)
+			{
+				no_supported = true;
 			}
 			
 		}
@@ -251,16 +343,15 @@ public abstract class FileDialog extends ListActivity{
 	}
 	@Override 
 	public boolean onKeyUp(int keyCode, KeyEvent event) {
-	    if (keyCode == KeyEvent.KEYCODE_MENU) {
-	        //do nothing
-	    }
-	    else if(keyCode == KeyEvent.KEYCODE_BACK)
+
+	    if(keyCode == KeyEvent.KEYCODE_BACK)
 	    {
 			Intent tmp = new Intent();
 			setResult(Activity.RESULT_CANCELED, tmp);
 			finish();
+			return true;
 	    }
-	    return true;
+	    return false;
 	}
 	
 	abstract public void onFileClick(int pos, FileAdapter list);

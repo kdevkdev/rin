@@ -1,0 +1,502 @@
+Archive member included because of file (symbol)
+
+./obj/local/mips/libcpufeatures.a(cpu-features.o)
+                              ./obj/local/mips/objs/preloadcheck/preloadcheck.o (android_getCpuFeatures)
+/home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+                              ./obj/local/mips/libcpufeatures.a(cpu-features.o) (__popcountsi2)
+/home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+                              /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o) (__popcount_tab)
+
+Discarded input sections
+
+ .reginfo       0x0000000000000000       0x18 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .mdebug.abi32  0x0000000000000000        0x0 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .reginfo       0x0000000000000000       0x18 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .mdebug.abi32  0x0000000000000000        0x0 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .reginfo       0x0000000000000000       0x18 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+ .mdebug.abi32  0x0000000000000000        0x0 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+ .reginfo       0x0000000000000000       0x18 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+ .mdebug.abi32  0x0000000000000000        0x0 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+ .reginfo       0x0000000000000000       0x18 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtend_so.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+                0x00000000000000f4                . = (0x0 + SIZEOF_HEADERS)
+
+.reginfo        0x00000000000000f4       0x18
+ *(.reginfo)
+ .reginfo       0x00000000000000f4       0x18 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.dynamic        0x000000000000010c      0x100
+ *(.dynamic)
+ .dynamic       0x000000000000010c      0x100 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+                0x000000000000010c                _DYNAMIC
+
+.hash           0x000000000000020c       0xc0
+ *(.hash)
+ .hash          0x000000000000020c       0xc0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym         0x00000000000002cc      0x1d0
+ *(.dynsym)
+ .dynsym        0x00000000000002cc      0x1d0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+
+.dynstr         0x000000000000049c      0x18b
+ *(.dynstr)
+ .dynstr        0x000000000000049c      0x18b /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+
+.gnu.version    0x0000000000000628        0x0 load address 0x0000000000000627
+ *(.gnu.version)
+ .gnu.version   0x0000000000000000        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+
+.gnu.version_d  0x0000000000000628        0x0 load address 0x0000000000000627
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000000000        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+
+.gnu.version_r  0x0000000000000628        0x0 load address 0x0000000000000627
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000000000        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+
+.rel.dyn        0x0000000000000628       0x48
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ *(.rel.dyn)
+ .rel.dyn       0x0000000000000628       0x48 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+
+.rela.dyn
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+
+.rel.plt        0x0000000000000670        0x0
+ *(.rel.plt)
+ .rel.plt       0x0000000000000000        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+
+.rela.plt
+ *(.rela.plt)
+
+.init
+ *(.init)
+
+.plt            0x0000000000000670        0x0
+ *(.plt)
+ .plt           0x0000000000000000        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+
+.text           0x0000000000000670      0x7a0
+                0x0000000000000670                _ftext = .
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000000670       0x90 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+                0x00000000000006e0                atexit
+ .text          0x0000000000000700        0x0 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .text.Java_org_rin_RinService_detectNeon
+                0x0000000000000700       0x68 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+                0x0000000000000700                Java_org_rin_RinService_detectNeon
+ *fill*         0x0000000000000768        0x8 00000000
+ .text          0x0000000000000770        0x0 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .text.android_getCpuCount
+                0x0000000000000770       0x48 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+                0x0000000000000770                android_getCpuCount
+ .text.android_getCpuFeatures
+                0x00000000000007b8       0x4c ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+                0x00000000000007b8                android_getCpuFeatures
+ .text.android_getCpuFamily
+                0x0000000000000804       0x48 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+                0x0000000000000804                android_getCpuFamily
+ .text.android_cpuInit
+                0x000000000000084c      0x564 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .text          0x0000000000000db0       0x60 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+                0x0000000000000db0                __popcountsi2
+ .text          0x0000000000000e10        0x0 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+ .text          0x0000000000000e10        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtend_so.o
+ *(.gnu.warning)
+ *(.mips16.fn.*)
+ *(.mips16.call.*)
+
+.MIPS.stubs     0x0000000000000e10       0x80
+ .MIPS.stubs    0x0000000000000e10       0x80 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+                0x0000000000000e10                __errno
+                0x0000000000000e20                pthread_once
+                0x0000000000000e30                memchr
+                0x0000000000000e40                read
+                0x0000000000000e50                __cxa_atexit
+                0x0000000000000e60                open
+                0x0000000000000e70                close
+
+.fini
+ *(.fini)
+                0x0000000000000e90                PROVIDE (__etext, .)
+                0x0000000000000e90                PROVIDE (_etext, .)
+                0x0000000000000e90                PROVIDE (etext, .)
+
+.rodata         0x0000000000000e90      0x160
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.4
+                0x0000000000000e90       0x54 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ *fill*         0x0000000000000ee4        0xc 00
+ .rodata        0x0000000000000ef0      0x100 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+                0x0000000000000ef0                __popcount_tab
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000000ff0       0x3c
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000000ff0       0x3c ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+
+.eh_frame
+ *(.eh_frame)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+                0x0000000000002000                . = ALIGN (0x1000)
+                0x0000000000002000                . = DATA_SEGMENT_ALIGN (0x1000, 0x1000)
+
+.eh_frame       0x0000000000002000       0xd0
+ *(.eh_frame)
+ .eh_frame      0x0000000000002000        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+ .eh_frame      0x0000000000002000       0x30 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+                                         0x2c (size before relaxing)
+ .eh_frame      0x0000000000002030       0x7c ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+                                         0x8c (size before relaxing)
+ .eh_frame      0x00000000000020ac       0x14 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+                                         0x20 (size before relaxing)
+ *fill*         0x00000000000020c0        0x0 00
+ .eh_frame      0x00000000000020c0       0x10 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtend_so.o
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x00000000000020d0        0x8
+ *crtbegin*.o(.init_array)
+ .init_array    0x00000000000020d0        0x4 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+                0x00000000000020d0                __INIT_ARRAY__
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x00000000000020d4        0x4 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtend_so.o
+
+.fini_array     0x00000000000020d8        0xc
+ *crtbegin*.o(.fini_array)
+ .fini_array    0x00000000000020d8        0x8 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+                0x00000000000020d8                __FINI_ARRAY__
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+ .fini_array    0x00000000000020e0        0x4 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtend_so.o
+
+.ctors          0x00000000000020e4        0x8
+ *crtbegin.o(.ctors)
+ *crtbegin*.o(.ctors)
+ .ctors         0x00000000000020e4        0x4 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+                0x00000000000020e4                __CTOR_LIST__
+ *(EXCLUDE_FILE(*crtend*.o *crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+ .ctors         0x00000000000020e8        0x4 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtend_so.o
+
+.dtors          0x00000000000020ec        0x8
+ *crtbegin.o(.dtors)
+ *crtbegin*.o(.dtors)
+ .dtors         0x00000000000020ec        0x4 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+                0x00000000000020ec                __DTOR_LIST__
+ *(EXCLUDE_FILE(*crtend*.o *crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+ .dtors         0x00000000000020f0        0x4 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtend_so.o
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro* .gnu.linkonce.d.rel.ro.*)
+                0x00000000000020f4                . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got.plt        0x00000000000020f4        0x0
+ *(.got.plt)
+ .got.plt       0x0000000000000000        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+
+.data           0x0000000000002100       0x10
+                0x0000000000002100                _fdata = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0000000000002100       0x10 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+                0x0000000000002100                __dso_handle
+ .data          0x0000000000002110        0x0 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .data          0x0000000000002110        0x0 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .data          0x0000000000002110        0x0 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+ .data          0x0000000000002110        0x0 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+ .data          0x0000000000002110        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtend_so.o
+
+.data1
+ *(.data1)
+                0x0000000000002110                . = .
+                0x000000000000a100                _gp = (ALIGN (0x10) + 0x7ff0)
+
+.got            0x0000000000002110       0x50
+ *(.got)
+ .got           0x0000000000002110       0x50 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+                0x0000000000002110                _GLOBAL_OFFSET_TABLE_
+
+.sdata
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+
+.lit8
+ *(.lit8)
+
+.lit4
+ *(.lit4)
+                0x0000000000002160                _edata = .
+                0x0000000000002160                PROVIDE (edata, .)
+                0x0000000000002160                __bss_start = .
+                0x0000000000002160                _fbss = .
+
+.sbss
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ *(.scommon)
+
+.bss            0x0000000000002160       0x40
+ *(.dynbss)
+ .dynbss        0x0000000000000000        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000002160       0x20 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+ .bss           0x0000000000002180        0x0 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .bss           0x0000000000002180       0x20 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .bss           0x00000000000021a0        0x0 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+ .bss           0x00000000000021a0        0x0 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+ .bss           0x00000000000021a0        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtend_so.o
+ *(COMMON)
+                0x00000000000021a0                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x00000000000021a0                . = ALIGN (0x4)
+                0x00000000000021a0                . = ALIGN (0x4)
+                0x00000000000021a0                _end = .
+                0x00000000000021a0                PROVIDE (end, .)
+                0x00000000000021a0                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.pdr            0x0000000000000000      0x100
+ .pdr           0x0000000000000000       0x40 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtbegin_so.o
+ .pdr           0x0000000000000040       0x20 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .pdr           0x0000000000000060       0x80 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .pdr           0x00000000000000e0       0x20 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+ .pdr           0x0000000000000100        0x0 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+ .pdr           0x0000000000000100        0x0 /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtend_so.o
+
+.comment        0x0000000000000000       0x11
+ *(.comment)
+ .comment       0x0000000000000000       0x11 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+                                         0x12 (size before relaxing)
+ .comment       0x0000000000000000       0x12 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .comment       0x0000000000000000       0x12 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+ .comment       0x0000000000000000       0x12 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000       0x78
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x20 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .debug_aranges
+                0x0000000000000020       0x38 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .debug_aranges
+                0x0000000000000058       0x20 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+
+.debug_pubnames
+                0x0000000000000000       0xe0
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x0000000000000000       0x39 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .debug_pubnames
+                0x0000000000000039       0x5e ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .debug_pubnames
+                0x0000000000000097       0x24 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+ .debug_pubnames
+                0x00000000000000bb       0x25 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+
+.debug_info     0x0000000000000000     0x3bde
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000     0x2fe8 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .debug_info    0x0000000000002fe8      0x9ec ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .debug_info    0x00000000000039d4      0x12b /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+ .debug_info    0x0000000000003aff       0xdf /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+
+.debug_abbrev   0x0000000000000000      0x4d4
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x151 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .debug_abbrev  0x0000000000000151      0x249 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .debug_abbrev  0x000000000000039a       0xbf /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+ .debug_abbrev  0x0000000000000459       0x7b /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+
+.debug_line     0x0000000000000000      0x8e6
+ *(.debug_line)
+ .debug_line    0x0000000000000000      0x20e ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .debug_line    0x000000000000020e      0x4c6 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .debug_line    0x00000000000006d4      0x115 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+ .debug_line    0x00000000000007e9       0xfd /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+
+.debug_frame    0x0000000000000000       0xd8
+ *(.debug_frame)
+ .debug_frame   0x0000000000000000       0x2c ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .debug_frame   0x000000000000002c       0x8c ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .debug_frame   0x00000000000000b8       0x20 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+
+.debug_str      0x0000000000000000     0x18f7
+ *(.debug_str)
+ .debug_str     0x0000000000000000     0x1531 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+                                       0x15a7 (size before relaxing)
+ .debug_str     0x0000000000001531      0x2dc ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+                                        0x434 (size before relaxing)
+ .debug_str     0x000000000000180d       0xea /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+                                        0x1a5 (size before relaxing)
+ .debug_str     0x0000000000000000      0x18f /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+
+.debug_loc      0x0000000000000000      0x4f9
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000       0x59 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .debug_loc     0x0000000000000059      0x47a ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .debug_loc     0x00000000000004d3       0x26 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x0000000000000000      0x298
+ *(.debug_ranges)
+ .debug_ranges  0x0000000000000000       0x10 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .debug_ranges  0x0000000000000010      0x288 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+
+.gnu.attributes
+                0x0000000000000000       0x10
+ *(.gnu.attributes)
+ .gnu.attributes
+                0x0000000000000000       0x10 ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+ .gnu.attributes
+                0x0000000000000010       0x10 ./obj/local/mips/libcpufeatures.a(cpu-features.o)
+ .gnu.attributes
+                0x0000000000000020       0x10 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcountsi2.o)
+ .gnu.attributes
+                0x0000000000000030       0x10 /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a(_popcount_tab.o)
+
+.gptab.sdata
+ *(.gptab.data)
+ *(.gptab.sdata)
+
+.gptab.sbss
+ *(.gptab.bss)
+ *(.gptab.sbss)
+
+.gcc_compiled_long32
+ *(.gcc_compiled_long32)
+
+.gcc_compiled_long64
+ *(.gcc_compiled_long64)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.mdebug.*)
+LOAD ./obj/local/mips/objs/preloadcheck/preloadcheck.o
+LOAD ./obj/local/mips/libcpufeatures.a
+LOAD /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/libstdc++.so
+LOAD /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/libm.so
+LOAD /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/libc.so
+LOAD /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a
+LOAD /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/libc.so
+LOAD /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/libdl.so
+LOAD /home/kaspar/dev/android/android-ndk-r8/toolchains/mipsel-linux-android-4.4.3/prebuilt/linux-x86/bin/../lib/gcc/mipsel-linux-android/4.4.3/libgcc.a
+LOAD /home/kaspar/dev/android/android-ndk-r8/platforms/android-9/arch-mips/usr/lib/crtend_so.o
+OUTPUT(obj/local/mips/libpreloadcheck.so elf32-tradlittlemips)
